@@ -60,10 +60,8 @@ jobs:
           curl -sL "https://github.com/sparkle-project/Sparkle/releases/download/2.6.0/Sparkle-2.6.0.tar.xz" -o /tmp/sparkle.tar.xz
           mkdir -p /tmp/sparkle && tar -xJ -C /tmp/sparkle -f /tmp/sparkle.tar.xz
 
-          # Write key to temp file and sign
-          echo -n "$SPARKLE_KEY" > /tmp/sparkle_key
-          SIGNATURE=$(/tmp/sparkle/bin/sign_update "StemsShortcut.zip" --ed-key-file /tmp/sparkle_key -p)
-          rm -f /tmp/sparkle_key
+          # Sign via stdin (sign_update accepts 32-byte seed via stdin, not file)
+          SIGNATURE=$(echo -n "$SPARKLE_KEY" | /tmp/sparkle/bin/sign_update "StemsShortcut.zip" --ed-key-file - -p)
           echo "SPARKLE_SIG=${SIGNATURE}" >> $GITHUB_ENV
 
       - name: Generate appcast.xml

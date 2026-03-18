@@ -24,5 +24,9 @@
 	<true/>
 	<key>NSAccessibilityUsageDescription</key>
 	<string>Stems Shortcut needs Accessibility access to trigger menu items in Ableton Live on your behalf.</string>
+	<key>SUFeedURL</key>
+	<string>https://lochiameroiutah.github.io/StemsShortcut/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>t/sjjFrDfhl3uCAQyEucvJdo9t0lVP+2ynXw4kj3op8=</string>
 </dict>
 </plist>
