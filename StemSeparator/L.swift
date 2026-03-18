@@ -72,4 +72,9 @@ enum L {
 
     // MARK: - Menu bar
     static let discoverWeero         = s("Scopri Weero", "Discover Weero")
+
+    // MARK: - Updates
+    static let updateAvailable       = s("Aggiornamento disponibile", "Update available")
+    static let updateInstall         = s("Clicca per installare", "Click to install")
+    static let checkForUpdates       = s("Aggiornamenti", "Check for Updates")
 }

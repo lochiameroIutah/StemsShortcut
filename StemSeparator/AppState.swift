@@ -1,6 +1,12 @@
 import SwiftUI
 import Carbon
 
+extension Bundle {
+    var shortVersion: String {
+        infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
+    }
+}
+
 final class AppState: ObservableObject {
     static let shared = AppState()
 

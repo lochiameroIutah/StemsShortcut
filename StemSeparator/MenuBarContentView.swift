@@ -14,6 +14,9 @@ struct MenuBarContentView: View {
                     .font(.headline)
                     .symbolRenderingMode(.hierarchical)
                 Spacer()
+                Text("v\(Bundle.main.shortVersion)")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 14)
@@ -47,9 +50,9 @@ struct MenuBarContentView: View {
                             .foregroundStyle(.blue)
                             .font(.subheadline)
                         VStack(alignment: .leading, spacing: 1) {
-                            Text(L.isItalian ? "Aggiornamento disponibile" : "Update available")
+                            Text(L.updateAvailable)
                                 .font(.caption).fontWeight(.medium)
-                            Text(L.isItalian ? "Clicca per installare" : "Click to install")
+                            Text(L.updateInstall)
                                 .font(.caption2).foregroundStyle(.secondary)
                         }
                         Spacer()
@@ -102,7 +105,7 @@ struct MenuBarContentView: View {
                 Button(action: {
                     UpdaterManager.shared.checkForUpdates()
                 }) {
-                    Label(L.isItalian ? "Aggiornamenti" : "Check for Updates", systemImage: "arrow.triangle.2.circlepath")
+                    Label(L.checkForUpdates, systemImage: "arrow.triangle.2.circlepath")
                         .font(.caption)
                 }
                 .buttonStyle(.plain)
