@@ -11,17 +11,15 @@ final class UpdaterManager: NSObject, ObservableObject, SPUUpdaterDelegate {
     @Published var canCheckForUpdates = false
     @Published var updateAvailable = false
 
-    private var cancellables = Set<AnyCancellable>()
-
     private override init() {
+        // Must init controller before super.init, but delegate needs self.
+        // Use two-phase: create with startingUpdater=false, then start manually.
         updaterController = SPUStandardUpdaterController(
             startingUpdater: false,
             updaterDelegate: nil,
             userDriverDelegate: nil
         )
         super.init()
-
-        updaterController.updater.delegate = self
 
         // Auto-check every 24 hours
         updaterController.updater.automaticallyChecksForUpdates = true
