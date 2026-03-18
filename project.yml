@@ -22,6 +22,8 @@ targets:
       properties:
         CFBundleDisplayName: Stems Shortcut
         CFBundleName: Stems Shortcut
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
         LSUIElement: YES
         NSAccessibilityUsageDescription: "Stems Shortcut needs Accessibility access to trigger menu items in Ableton Live on your behalf."
         SUFeedURL: "https://lochiameroiutah.github.io/StemsShortcut/appcast.xml"
@@ -42,6 +44,8 @@ targets:
         MACOSX_DEPLOYMENT_TARGET: "13.0"
         PRODUCT_BUNDLE_IDENTIFIER: com.matteozampieri.stemseparator
         PRODUCT_NAME: Stems Shortcut
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
         CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: 7HB6926XLK
         CODE_SIGN_IDENTITY: "Apple Development"

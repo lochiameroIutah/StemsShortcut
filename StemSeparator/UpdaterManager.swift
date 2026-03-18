@@ -6,20 +6,20 @@ import Combine
 final class UpdaterManager: NSObject, ObservableObject, SPUUpdaterDelegate {
     static let shared = UpdaterManager()
 
-    let updaterController: SPUStandardUpdaterController
+    private(set) var updaterController: SPUStandardUpdaterController!
 
     @Published var canCheckForUpdates = false
     @Published var updateAvailable = false
 
     private override init() {
-        // Must init controller before super.init, but delegate needs self.
-        // Use two-phase: create with startingUpdater=false, then start manually.
+        super.init()
+
+        // Now that self is available, create controller with self as delegate
         updaterController = SPUStandardUpdaterController(
             startingUpdater: false,
-            updaterDelegate: nil,
+            updaterDelegate: self,
             userDriverDelegate: nil
         )
-        super.init()
 
         // Auto-check every 24 hours
         updaterController.updater.automaticallyChecksForUpdates = true
