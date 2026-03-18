@@ -25,7 +25,7 @@ targets:
         LSUIElement: YES
         NSAccessibilityUsageDescription: "Stems Shortcut needs Accessibility access to trigger menu items in Ableton Live on your behalf."
         SUFeedURL: "https://lochiameroiutah.github.io/StemsShortcut/appcast.xml"
-        SUPublicEDKey: "dWaXya793SYbncHOBT4ZwsHuKeTxy4cdJyw74S7HYok="
+        SUPublicEDKey: "t/sjjFrDfhl3uCAQyEucvJdo9t0lVP+2ynXw4kj3op8="
     dependencies:
       - sdk: ServiceManagement.framework
       - package: Sparkle

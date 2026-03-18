@@ -58,13 +58,9 @@ jobs:
           curl -sL "https://github.com/sparkle-project/Sparkle/releases/download/2.6.0/Sparkle-2.6.0.tar.xz" -o /tmp/sparkle.tar.xz
           mkdir -p /tmp/sparkle && tar -xJ -C /tmp/sparkle -f /tmp/sparkle.tar.xz
 
-          # Write the Ed25519 private key
-          echo -n "${{ secrets.SPARKLE_PRIVATE_KEY }}" > /tmp/sparkle_ed_key
-
-          # Sign the ZIP
-          SIGNATURE=$(/tmp/sparkle/bin/sign_update "StemsShortcut.zip" --ed-key-file /tmp/sparkle_ed_key | grep "sparkle:edSignature" | sed 's/.*"\(.*\)".*/\1/')
+          # Sign the ZIP using stdin for the private key
+          SIGNATURE=$(echo "${{ secrets.SPARKLE_PRIVATE_KEY }}" | /tmp/sparkle/bin/sign_update "StemsShortcut.zip" --ed-key-file - -p)
           echo "SPARKLE_SIG=${SIGNATURE}" >> $GITHUB_ENV
-          rm /tmp/sparkle_ed_key
 
       - name: Generate appcast.xml
         run: |
